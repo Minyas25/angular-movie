@@ -1,13 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Movie } from '../entities';
+import { MovieService } from '../movie.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
-  list:Movie[] = [
-    {id:1, title: 'Test', resume: 'test', released: '2021-01-03', duration:200}
-  ];
+export class HomeComponent implements OnInit {
+  list:Movie[] = [];
+
+  constructor(private service:MovieService){}
+
+  ngOnInit(): void {
+    this.service.fetchAll()
+    .subscribe(data => this.list = data);
+    
+  }
 }
