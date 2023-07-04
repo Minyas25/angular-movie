@@ -13,6 +13,11 @@ export class MovieService {
     return this.http.get<Movie[]>('http://localhost:8000/api/movie');
   }
 
+  fetchOne(id:any) {
+    return this.http.get<Movie>('http://localhost:8000/api/movie/'+id);
+
+  }
+
   add(movie:Movie) {
     return this.http.post<Movie>('http://localhost:8000/api/movie', movie);
   }
