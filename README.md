@@ -32,3 +32,13 @@ Si ce n'est pas déjà fait
 5. Côté HomeComponent, on rajoute un constructeur avec une private MovieService dedans
 6. On ajoute une méthode getData qui va utiliser la méthode fetchAll du movie service et faire un subscribe dessus et qui va directement assigner la valeur du subscribe à la propriété movies du HomeComponent
 7. On rajoute un bouton qui au click lancera le getData
+
+
+### Le formulaire de movie
+1. Créer un nouveau component FormMovieComponent et dans son template créer un form avec label et input pour title,released,resume,duration
+2. Créer une propriété movie:Movie dans ce component et lier ses propriétés aux inputs du form
+3. Rajouter une méthode handleSubmit() qui va pour le moment faire juste un console log du movie pour voir si tout est bien connecté
+4. Dans le MovieService rajouter une méthode add(movie:Movie) qui va faire un http.post vers api/movie en lui donnant le movie en deuxième argument du post
+5. Dans le FormMovieComponent, on récupère le service dans le constructeur et on fait en sorte d'appeler le post dans le handleSubmit
+6. Rajouter un @Output added qui sera un EventEmitter avec un Movie dedans, puis faire en sorte de déclencher le emit dans le subscribe du post en lui donnant les data comme argument
+7. Côté HomeComponent, créer une méthode toList(movie:Movie) qui va faire un push dans this.list et assigner cette méthode au (added) du app-form-movie en lui donnant $event en argument
