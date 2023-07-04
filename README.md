@@ -42,3 +42,10 @@ Si ce n'est pas déjà fait
 5. Dans le FormMovieComponent, on récupère le service dans le constructeur et on fait en sorte d'appeler le post dans le handleSubmit
 6. Rajouter un @Output added qui sera un EventEmitter avec un Movie dedans, puis faire en sorte de déclencher le emit dans le subscribe du post en lui donnant les data comme argument
 7. Côté HomeComponent, créer une méthode toList(movie:Movie) qui va faire un push dans this.list et assigner cette méthode au (added) du app-form-movie en lui donnant $event en argument
+
+
+### Suppression des movie
+1. Dans le MovieService, rajouter une méthode delete qui va attendre un id number en argument et qui va s'en servir pour déclencher un http.delete en concaténant l'id à l'url
+2. Dans le movie-item.component.html, rajouter un bouton de suppression et faire que lorsque l'on click dessus va emit un @Output avec le movie dedans
+3. Côté HomeComponent on crée une méthode removeMovie(movie:Movie) qui va faire appel au delete du MovieService et dans le subscribe va faire en sorte de retirer le movie en question de la list (voir comment on utilise le filter)
+4. Dans le template du home, on assigne cette méthode sur le app-movie-item
