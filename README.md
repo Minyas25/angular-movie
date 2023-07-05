@@ -57,3 +57,10 @@ Si ce n'est pas déjà fait
 3. Dans le SingleMovieComponent, créer une propriété movie:Movie en vous inspirant de l'exemple de routing paramétré, récupérer la valeur du paramètre id et s'en servir pour faire un appel au fetchOne (le constructeur aura donc 2 arguments private), on aura donc un subscribe dans un subscribe...
 4. Faire le template pour afficher les informations du films
 5. Dans le template du MovieItem, rajouter un a avec un routerLink à la place du href qui pointera sur la route /movie/id
+
+### Mise à jour
+1. Dans le FormMovieComponent, rajouter un @Input sur le movie:Movie
+2. Dans le template de SingleMovieComponent, appeler le app-form-movie dans la div if (pas celle qui a le loading) en lui donnant à manger le movie (ça devrait préremplir les champs)
+3. Toujours dans SingleMovieComponent, créer une méthode updateMovie(movie:Movie) qui va faire un console log de son argument et faire en sorte de l'appeler au (added) du FormMovie
+4. Dans le service, créer une méthode update(movie:Movie) avec un http.patch dedans qui va à la fois concaténé l'id (comme le fetchOne ou le delete) mais aussi donner son movie en deuxième argument du patch (comme le post)
+5. Appeler cette méthode dans le updateMovie du SingleMovieComponent et dans son subscribe on remplace this.movie par data
