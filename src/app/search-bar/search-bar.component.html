@@ -1,0 +1,6 @@
+<nav>
+    <input type="search" placeholder="Search..." [(ngModel)]="term" (keyup)="doSearch()">
+    <ul>
+        <li *ngFor="let result of results">{{result.title}}</li>
+    </ul>
+</nav>
