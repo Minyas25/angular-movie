@@ -13,6 +13,16 @@ export class FormMovieComponent {
   @Output()
   added = new EventEmitter<Movie>();
 
+  handleImage(event:Event ) {
+    const target = event.target as HTMLInputElement;
+    if(target.files) {
+      var reader = new FileReader();
+      reader.readAsDataURL(target.files[0]);
+      reader.onload =  () => {
+        this.movie.picture = reader.result as string;
+      };
+    }
+  }
   
   handleSubmit() {
      this.added.emit(this.movie);
