@@ -10,11 +10,14 @@ export class MovieService {
   constructor(private http:HttpClient) { }
 
   fetchAll() {
-    return this.http.get<Movie[]>('http://localhost:8000/api/movie');
+    return this.http.get<Movie[]>('http://localhost:8000/api/movie')
+    //pfff
+    // .pipe(map(data => data.map(item => ({...item, released:item.released.substring(0,10)}))));
   }
 
   fetchOne(id:any) {
-    return this.http.get<Movie>('http://localhost:8000/api/movie/'+id);
+    return this.http.get<Movie>('http://localhost:8000/api/movie/'+id)
+    ;
 
   }
 
@@ -25,5 +28,9 @@ export class MovieService {
   delete(id:number) {
     return this.http.delete<void>('http://localhost:8000/api/movie/'+id);
 
+  }
+
+  update(movie:Movie) {
+    return this.http.patch<Movie>('http://localhost:8000/api/movie/'+movie.id, movie);
   }
 }

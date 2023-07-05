@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Movie } from '../entities';
 
 @Component({
@@ -7,6 +7,7 @@ import { Movie } from '../entities';
   styleUrls: ['./form-movie.component.css']
 })
 export class FormMovieComponent {
+  @Input()
   movie:Movie = {title: '', resume:'', released: '', duration: 0};
 
   @Output()

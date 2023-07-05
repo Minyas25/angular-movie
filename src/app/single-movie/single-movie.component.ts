@@ -25,4 +25,8 @@ export class SingleMovieComponent implements OnInit {
     ).subscribe(data => this.movie = data);
     */
   }
+
+  updateMovie(movie:Movie) {
+    this.service.update(movie).subscribe(data => this.movie = data);
+  }
 }
