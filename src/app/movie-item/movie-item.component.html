@@ -1,4 +1,5 @@
 <article>
     <h3><a routerLink="/movie/{{movie.id}}">{{movie.title}}</a> <button (click)="buttonPressed()">x</button></h3>
+    <img *ngIf="movie.picture" src="{{serverUrl}}/{{movie.picture}}" [alt]="movie.title">
     <p>{{movie.released|date}}</p>
 </article>

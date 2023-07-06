@@ -16,7 +16,7 @@ export class FormMovieComponent {
   handleImage(event:Event ) {
     const target = event.target as HTMLInputElement;
     if(target.files) {
-      var reader = new FileReader();
+      const reader = new FileReader();
       reader.readAsDataURL(target.files[0]);
       reader.onload =  () => {
         this.movie.picture = reader.result as string;

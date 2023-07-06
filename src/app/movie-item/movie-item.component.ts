@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Movie } from '../entities';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-movie-item',
@@ -9,6 +10,7 @@ import { Movie } from '../entities';
 export class MovieItemComponent {
   @Input({required:true})
   movie:Movie;
+  serverUrl = environment.serverUrl;
 
   @Output()
   delete = new EventEmitter<Movie>();
